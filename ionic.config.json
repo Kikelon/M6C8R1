@@ -1,0 +1,7 @@
+{
+  "name": "appDiscoIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
