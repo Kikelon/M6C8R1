@@ -25,6 +25,7 @@ export class VistaPage implements OnInit {
             this.disco = data[0];
 						const message = 'No hay nigún disco con el id:\"' + discoId.value + '\" en la base de datos';
 						if (data[0]==null) {
+              this.disco = null;
 							this.presentToast(message);
 						};
 						discoId.value = '';
