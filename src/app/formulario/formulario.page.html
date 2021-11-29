@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>formulario</ion-title>
+    <ion-title>Formulario de Disco</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Título</ion-label>
+      <ion-input type="text" #titulo></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Artista</ion-label>
+      <ion-input type="text" #artista></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Año de publicación</ion-label>
+      <ion-input type="text" #anyoPublicacion></ion-input>
+    </ion-item>
+  </ion-list>
+    <ion-button color="success" expand="block" (click) = "insertarDisco(titulo, artista, anyoPublicacion)">Insertar</ion-button>  
+    <ion-button expand="block" routerLink="/home" routerDirection="back">Home</ion-button>
 </ion-content>
