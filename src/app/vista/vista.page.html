@@ -12,12 +12,29 @@
     </ion-item>
   </ion-list>
   <hr>
-  <div *ngIf="disco!==null">
-    id: {{ disco.id }}<br>
-    Título: {{ disco.titulo }}<br>
-    Intérprete: {{ disco.interprete }}<br>
-    Año de publicación: {{ disco.anyoPublicacion }}<br>
+  <div class="tableContainer" *ngIf="discos!==null">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Interprete</th>
+          <th scope="col">Año de publicación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let disco of discos; let i = index; even as isEven;">
+          <tr [ngClass]="{ 'even' : isEven }">
+            <td>{{ disco.id }}</td>
+            <td>{{ disco.titulo }}</td>
+            <td>{{ disco.interprete }}</td>
+            <td>{{ disco.anyoPublicacion }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
   </div>
-  <ion-button color="sucess" expand="block" (click)="mostrarDisco(discoId)">Mostrar</ion-button>
+  <br>
+  <ion-button color="success" expand="block" (click)="mostrarDisco(discoId)">Mostrar</ion-button>
   <ion-button expand="block" routerLink="/home">Home</ion-button>
 </ion-content>
