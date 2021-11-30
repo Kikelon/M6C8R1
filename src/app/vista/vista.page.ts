@@ -11,29 +11,38 @@ import { DiscoService } from '../shared/disco.service';
 
 export class VistaPage implements OnInit {
 
-  public disco: Disco;
+  public discos: Disco;
   public toast: any;
 
   constructor(private apiService: DiscoService, private toastCtrl: ToastController) {
-    this.disco = null;
+    this.discos = null;
   }
 
   mostrarDisco(discoId: HTMLInputElement){
     if (discoId.value !== ''){
         this.apiService.obtenerDisco(parseInt(discoId.value, 10)).subscribe((data: any) =>
         {
-            this.disco = data[0];
-						const message = 'No hay nigún disco con el id:\"' + discoId.value + '\" en la base de datos';
+            this.discos = data;
 						if (data[0]==null) {
-              this.disco = null;
+              const message = 'No hay nigún disco con el id: \"' + discoId.value + '\" en la base de datos';
+              this.discos = null;
 							this.presentToast(message);
 						};
 						discoId.value = '';
           });
         }
-      else
-      {
-        this.presentToast('Ha de introducir un id por el que buscar.');
+      else {
+        this.apiService.obtenerDiscos().subscribe((data: any) =>
+        {
+            this.discos = data;
+            console.log(this.discos);
+						if (data==null) {
+              const message = 'No hay nigún disco en la base de datos';
+              this.discos = null;
+							this.presentToast(message);
+						};
+						discoId.value = '';
+        });
       }
   };
 
